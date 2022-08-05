@@ -24,9 +24,9 @@ db.create_all()
 # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 
-# @app.get('/')
-# def home_page():
-#     """go to the home page"""
-#     pets = Pet.query.get_or_404().all()
+@app.get('/')
+def home_page():
+    """go to the home page"""
+    pets = Pet.query.all()
 
-#     return render_template('index.html', pets=pets)
+    return render_template('index.html', pets=pets)
