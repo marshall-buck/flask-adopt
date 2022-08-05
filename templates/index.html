@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Pets{% endblock %}
+
+
+{% block content %}
+<h1>Pets</h1>
+{% if pets %}
+{% for pet in pets %}
+<div>
+  <img src="{{pet.photo_url}}">
+  <!-- TODO: if available make it bold -->
+  <span>{{pet.name}} is {{pet.available}}</span>
+
+</div>
+<!-- TODO: maybe change to link -->
+<form action=""><button>Add a Pet</button></form>
+
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

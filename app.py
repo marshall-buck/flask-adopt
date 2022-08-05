@@ -1,10 +1,10 @@
 """Flask app for adopt app."""
 
-from flask import Flask
+from flask import Flask, render_template
 
 from flask_debugtoolbar import DebugToolbarExtension
 
-from models import db, connect_db
+from models import db, connect_db, Pet
 
 app = Flask(__name__)
 
@@ -13,6 +13,8 @@ app.config['SECRET_KEY'] = "secret"
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///adopt"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
+toolbar = DebugToolbarExtension(app)
 connect_db(app)
 db.create_all()
 
@@ -21,4 +23,10 @@ db.create_all()
 #
 # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
-toolbar = DebugToolbarExtension(app)
+
+# @app.get('/')
+# def home_page():
+#     """go to the home page"""
+#     pets = Pet.query.get_or_404().all()
+
+#     return render_template('index.html', pets=pets)
